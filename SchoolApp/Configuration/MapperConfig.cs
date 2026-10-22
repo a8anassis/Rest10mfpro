@@ -6,7 +6,6 @@ namespace SchoolApp.Configuration
 {
     public class MapperConfig : Profile
     {
-
         public MapperConfig()
         {
             CreateMap<User, UserReadOnlyDTO>()
