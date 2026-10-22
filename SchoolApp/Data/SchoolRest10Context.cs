@@ -3,9 +3,9 @@ using SchoolApp.Models;
 
 namespace SchoolApp.Data;
 
-public class SchoolMvc10Context : DbContext
+public class SchoolRest10Context : DbContext
 {
-    public SchoolMvc10Context(DbContextOptions<SchoolMvc10Context> options) : base(options)
+    public SchoolRest10Context(DbContextOptions<SchoolRest10Context> options) : base(options)
     { }
 
     public DbSet<Teacher> Teachers { get; set; }
@@ -142,21 +142,21 @@ public class SchoolMvc10Context : DbContext
         {
             switch (entry.State)
             {
-                case EntityState.Added:
-                    entry.Entity.InsertedAt = now;
-                    entry.Entity.ModifiedAt = now;
-                    break;
+                //case EntityState.Added:
+                //    entry.Entity.InsertedAt = now;
+                //    entry.Entity.ModifiedAt = now;
+                //    break;
 
-                case EntityState.Modified:
-                    entry.Entity.ModifiedAt = now;
-                    break;
+                //case EntityState.Modified:
+                //    entry.Entity.ModifiedAt = now;
+                //    break;
 
-                case EntityState.Deleted:
-                    entry.State = EntityState.Unchanged;
-                    entry.Entity.IsDeleted = true;
-                    entry.Entity.DeletedAt = now;
-                    entry.Entity.ModifiedAt = now;
-                    break;
+                //case EntityState.Deleted:
+                //    entry.State = EntityState.Unchanged;
+                //    entry.Entity.IsDeleted = true;
+                //    entry.Entity.DeletedAt = now;
+                //    entry.Entity.ModifiedAt = now;
+                //    break;
             }
         }
     }
