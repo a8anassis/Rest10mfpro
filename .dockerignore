@@ -1,0 +1,25 @@
+# Build output (αντίστοιχο του target στη Java)
+**/bin/
+**/obj/
+
+# Git
+.git/
+
+# IDE (αντίστοιχο του .idea)
+.vs/
+*.user
+
+# Rider
+.idea/
+
+# Environment files
+.env
+.env.*
+
+# Docker files
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Test project
+SchoolApp.Tests

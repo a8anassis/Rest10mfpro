@@ -1,0 +1,8 @@
+.env.*
+!.env.example
+
+.vs/
+
+# Build output
+**/bin/
+**/obj/
