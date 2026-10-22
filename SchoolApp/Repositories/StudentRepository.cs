@@ -6,7 +6,7 @@ namespace SchoolApp.Repositories;
 
 public class StudentRepository : BaseRepository<Student>, IStudentRepository
 {
-    public StudentRepository(SchoolMvcDbfirstContext context) : base(context)
+    public StudentRepository(SchoolRest10Context context) : base(context)
     {
     }
 

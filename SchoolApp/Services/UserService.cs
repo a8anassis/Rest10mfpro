@@ -70,7 +70,7 @@ namespace SchoolApp.Services
 
                 if (user is null)
                 {
-                    throw new EntityNotFoundException("User with " + username + " not found.");
+                    throw new EntityNotFoundException("User", "Enity not found.");
                 }
 
                 _logger.LogInformation("User found with username={Username}", username);
@@ -91,7 +91,7 @@ namespace SchoolApp.Services
 
                 if (user is null || !_encryptionUtil.IsValidPassword(credentials.Password!, user.Password))
                 {
-                    throw new EntityNotAuthorizedException("Bad Credentials");
+                    throw new EntityNotAuthorizedException("Auth", "Bad Credentials");
                 }
                 _logger.LogInformation("User with username={Username} verified for login.", credentials.Username);
                 return user;

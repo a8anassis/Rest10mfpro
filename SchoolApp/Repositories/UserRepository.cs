@@ -8,7 +8,7 @@ namespace SchoolApp.Repositories;
 
 public class UserRepository : BaseRepository<User>, IUserRepository
 {
-    public UserRepository(SchoolMvcDbfirstContext context) : base(context)
+    public UserRepository(SchoolRest10Context context) : base(context)
     {
     }
 

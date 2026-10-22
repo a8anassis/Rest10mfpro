@@ -5,10 +5,10 @@ namespace SchoolApp.Repositories
 {
     public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        protected readonly SchoolMvcDbfirstContext _context;
+        protected readonly SchoolRest10Context _context;
         protected readonly DbSet<T> _dbSet;
 
-        public BaseRepository(SchoolMvcDbfirstContext context)
+        public BaseRepository(SchoolRest10Context context)
         {
             _context = context;
             _dbSet = context.Set<T>();      // dynamically retrieves DbSet

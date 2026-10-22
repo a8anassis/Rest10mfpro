@@ -6,7 +6,5 @@
             : base(code, message)
         {
         }
-
-
     }
 }

@@ -4,7 +4,7 @@ namespace SchoolApp.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly SchoolMvcDbfirstContext _context;
+    private readonly SchoolRest10Context _context;
 
     public IUserRepository UserRepository { get; }
     public ITeacherRepository TeacherRepository { get; }
@@ -12,7 +12,7 @@ public class UnitOfWork : IUnitOfWork
     public ICourseRepository CourseRepository { get; }
 
 
-    public UnitOfWork(SchoolMvcDbfirstContext context)
+    public UnitOfWork(SchoolRest10Context context)
     {
         _context = context;
         UserRepository = new UserRepository(context);
