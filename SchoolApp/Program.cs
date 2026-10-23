@@ -12,6 +12,7 @@ using Serilog;
 using System.Text;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using SchoolApp.Helpers;
 
 
 namespace SchoolApp
@@ -72,6 +73,26 @@ namespace SchoolApp
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             });
 
+
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "School App", Version = "v1" });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
+
+                options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme,
+                    new OpenApiSecurityScheme
+                    {
+                        Description = "JWT Authentication header using the Bearer Scheme",
+                        Type = SecuritySchemeType.Http,
+                        Scheme = JwtBearerDefaults.AuthenticationScheme,
+                        BearerFormat = "JWT"
+                    });
+                options.OperationFilter<AuthorizeOperationFilter>();
+            });
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -83,7 +104,10 @@ namespace SchoolApp
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-               
+                app.UseSwagger();
+                app.UseSwaggerUI();
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "School App v1"));
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "School App v2"));
             }
 
             app.UseHttpsRedirection();
