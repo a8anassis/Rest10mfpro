@@ -11,6 +11,6 @@ namespace SchoolApp.Services
         Task<UserReadOnlyDTO?> GetUserByUsernameAsync(string username);
         Task<PaginatedResult<UserReadOnlyDTO>> GetPaginatedUsersFilteredAsync(int pageNumber, int pageSize,
             UserFiltersDTO userFiltersDTO);
-
+        string CreateUserToken(User user);
     }
 }
