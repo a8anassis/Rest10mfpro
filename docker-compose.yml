@@ -15,22 +15,22 @@ services:
       timeout: 5s
       retries: 5
 
-  # webapp:
-  #   build: .
-  #   container_name: rest10mfpro-app
-  #   ports:
-  #     - "${APP_PORT:-8081}:8080"             port mapping - host port από .env ή default 8081, container port 8080 (όπως ορίζεται στο appsettings.json)
-  #   environment:
-  #     Jwt__Issuer: "${JWT_ISSUER:-https://localhost:8081}"
-  #     Jwt__Audience: "${JWT_AUDIENCE:-https://localhost:8081}"
-  #     Jwt__Secret: "${JWT_SECRET}"
-  #     Cors__Origin: "${CORS_ORIGIN:-http://localhost:3000}"
-  #     AllowedHosts: "${ALLOWED_HOSTS:-*}"
-  #     ASPNETCORE_ENVIRONMENT: "${ASPNETCORE_ENVIRONMENT:-Production}"
-  #     ConnectionStrings__DevConnection: "Server=${DB_HOST};Database=${DB_NAME};User=${DB_USER};Password=${DB_USER_PASSWORD};MultipleActiveResultSets=true;TrustServerCertificate=True"
-  #   depends_on:   
-  #     sqlserver:
-  #       condition: service_healthy
+  webapp:
+    build: .
+    container_name: rest10mfpro-app
+    ports:
+      - "${APP_PORT:-8081}:8080"             # port mapping - host port από .env ή default 8081, container port 8080 (όπως ορίζεται στο appsettings.json)
+    environment:
+      Jwt__Issuer: "${JWT_ISSUER:-https://localhost:8081}"
+      Jwt__Audience: "${JWT_AUDIENCE:-https://localhost:8081}"
+      Jwt__Secret: "${JWT_SECRET}"
+      Cors__Origin: "${CORS_ORIGIN:-http://localhost:3000}"
+      AllowedHosts: "${ALLOWED_HOSTS:-*}"
+      ASPNETCORE_ENVIRONMENT: "${ASPNETCORE_ENVIRONMENT:-Production}"
+      ConnectionStrings__DevConnection: "Server=${DB_HOST};Database=${DB_NAME};User=${DB_USER};Password=${DB_USER_PASSWORD};MultipleActiveResultSets=true;TrustServerCertificate=True"
+    depends_on:   
+      sqlserver:
+        condition: service_healthy
 
 volumes:
   sqlserverrest10mfpro-data:
